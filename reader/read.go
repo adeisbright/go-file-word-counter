@@ -16,3 +16,11 @@ func Read(sentence []string, text string) (int, error) {
 	}
 	return wordCounter, nil
 }
+
+func ReadCommandLine(args []string) (string, error) {
+	if len(args) < 2 {
+		return "a", errors.New("pass the name of the file in the cli")
+	}
+	fileName := args[1]
+	return fileName, nil
+}

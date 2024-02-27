@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"strings"
 
 	"github.com/adeisbright/go-file-word-counter/reader"
@@ -18,4 +19,12 @@ func main() {
 		return
 	}
 	fmt.Printf("The word '%s' appears %d times in the sentence.\n", word, wordCount)
+	args := os.Args
+	fileName, err := reader.ReadCommandLine(args)
+	if err != nil {
+		fmt.Println("Error occured: ", err)
+		return
+	}
+	fmt.Println("The filename is", fileName)
+
 }
