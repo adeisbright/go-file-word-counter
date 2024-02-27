@@ -1,7 +1,9 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"log"
 	"os"
 	"strings"
 
@@ -26,5 +28,35 @@ func main() {
 		return
 	}
 	fmt.Println("The filename is", fileName)
+	//Getting the Current Directory
+	wd, err := os.Getwd()
+	if err != nil {
+		fmt.Println("Error occured: ", err)
+		return
+	}
+	fmt.Println("Working Directory is", wd)
 
+	//Reading From a File at Once
+	file, err := os.Open("example.txt")
+	if err != nil {
+		fmt.Println("Problem Opening File: ", err)
+		return
+	}
+
+	defer file.Close()
+	scanner := bufio.NewScanner(file)
+
+	for scanner.Scan() {
+		line := scanner.Text()
+		processData(line)
+	}
+	if err := scanner.Err(); err != nil {
+		log.Fatalf("Error scanning file: %v", err)
+	}
+
+	fmt.Println("Program Successfully  Completed")
+}
+
+func processData(line string) {
+	fmt.Println(line)
 }

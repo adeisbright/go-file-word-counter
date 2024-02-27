@@ -1,0 +1,6 @@
+Name            Age         Gender 
+Adeleke         30          Male 
+Odun            27          Male 
+Jare            24          Male 
+Arole           20          Female 
+Afani           17          Female 
