@@ -66,3 +66,28 @@ func ReadFromFile(fileName string) {
 		fmt.Println(err)
 	}
 }
+
+func CreateFile(fileName string) {
+	file, err := os.Create(fileName)
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer file.Close()
+	fmt.Printf("%s has been created", fileName)
+}
+
+func RemoveFile(fileName string) {
+	err := os.Remove(fileName)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Printf("%s has been removed", fileName)
+}
+
+func RenameFile(oldName string, newName string) {
+	err := os.Rename(oldName, newName)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Printf("%s has been removed to %s", oldName, newName)
+}

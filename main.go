@@ -33,18 +33,9 @@ func main() {
 		return
 	}
 	fmt.Println("Working Directory is", wd)
-
+	fileName = "demo.txt"
 	//Reading From a File at Once
-	reader.ReadFromFile("example.txt")
-	//Create a file
-	// f, err := os.Create("hello.txt")
-	// if err != nil {
-	// 	fmt.Println("Problem Creating File: ", err)
-	// 	return
-	// }
-	// defer f.Close()
-	// f.WriteString("Example of How to Write to a File")
-	// fmt.Println("Program Successfully  Completed")
-	reader.WriteToFile("hello.txt", "John is coming\n")
-	reader.WriteToFile("hello.txt", "John is going\n")
+	reader.RenameFile("example.txt", "demo.txt")
+	reader.WriteToFile(fileName, "John is coming\n")
+	reader.WriteToFile(fileName, "John is going\n")
 }
