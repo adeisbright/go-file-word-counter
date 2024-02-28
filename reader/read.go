@@ -48,7 +48,7 @@ func WriteToFile(fileName string, content string) {
 	}
 }
 
-func ReadFromFile(fileName string) {
+func ReadFromFile(fileName string) (string, error) {
 	file, err := os.Open(fileName)
 	if err != nil {
 		fmt.Println(err)
@@ -57,14 +57,16 @@ func ReadFromFile(fileName string) {
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
+	var result string
 
 	for scanner.Scan() {
 		line := scanner.Text()
-		fmt.Println(line)
+		result += line + "\n"
 	}
 	if err := scanner.Err(); err != nil {
 		fmt.Println(err)
 	}
+	return result, nil
 }
 
 func CreateFile(fileName string) {

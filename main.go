@@ -10,32 +10,21 @@ import (
 
 func main() {
 	fmt.Println("Welcome to File Word Counter")
-	sentence := "The quick brown fox jumps over the lazy dog"
+	args := os.Args
+	fileName, err := reader.ReadCommandLine(args)
+	if err != nil {
+		fmt.Println("Error Reading Command Line Arg: ", err)
+	}
+	sentence, err := reader.ReadFromFile(fileName)
+	if err != nil {
+		fmt.Println(err)
+	}
 	words := strings.Fields(sentence)
-	word := "dog"
+	word := "John"
 	wordCount, err := reader.Read(words, word)
 	if err != nil {
 		fmt.Println("Error occured", err)
 		return
 	}
 	fmt.Printf("The word '%s' appears %d times in the sentence.\n", word, wordCount)
-	args := os.Args
-	fileName, err := reader.ReadCommandLine(args)
-	if err != nil {
-		fmt.Println("Error occured: ", err)
-		return
-	}
-	fmt.Println("The filename is", fileName)
-	//Getting the Current Directory
-	wd, err := os.Getwd()
-	if err != nil {
-		fmt.Println("Error occured: ", err)
-		return
-	}
-	fmt.Println("Working Directory is", wd)
-	fileName = "demo.txt"
-	//Reading From a File at Once
-	reader.RenameFile("example.txt", "demo.txt")
-	reader.WriteToFile(fileName, "John is coming\n")
-	reader.WriteToFile(fileName, "John is going\n")
 }
