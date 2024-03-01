@@ -30,4 +30,5 @@ func main() {
 	fmt.Printf("The word '%s' appears %d times in the sentence.\n", word, wordCount)
 
 	randomness.GenerateNumber()
+	randomness.Time()
 }
