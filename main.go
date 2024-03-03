@@ -5,6 +5,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/adeisbright/go-file-word-counter/randomness"
 	"github.com/adeisbright/go-file-word-counter/reader"
 )
 
@@ -27,4 +28,7 @@ func main() {
 		return
 	}
 	fmt.Printf("The word '%s' appears %d times in the sentence.\n", word, wordCount)
+
+	randomness.GenerateNumber()
+	randomness.Time()
 }
